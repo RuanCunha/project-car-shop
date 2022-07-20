@@ -25,4 +25,10 @@ export default class CarService implements CarServiceInterface {
     const car = await this._carModel.readOne(id);
     return car;
   }
+
+  async update(id: string, car: Car): Promise<Car | null> {
+    CarSchema.parse(car);
+    const result = await this._carModel.update(id, car);
+    return result;
+  }
 }
