@@ -1,6 +1,7 @@
 import App from './app';
 import errorMiddleware from './middlewares/errorMiddleware';
 import CarRouter from './routes/CarRouter';
+import MotoRouter from './routes/MotorcycleRouter';
 
 // import exampleController from './controllers/controller-example';
 
@@ -9,6 +10,7 @@ import CarRouter from './routes/CarRouter';
 const server = new App();
 
 server.addMiddleware(CarRouter);
+server.addMiddleware(MotoRouter);
 server.addMiddleware(errorMiddleware);
 // const exampleController = new exampleController();
 
