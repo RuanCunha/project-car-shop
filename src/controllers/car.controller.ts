@@ -48,10 +48,25 @@ export default class CarController implements CarControllerInterface {
     }
   }
 
-  // async readOne(req: Request, res: Response, next: NextFunction)
-  // : Promise<void | Response> {
-  //   throw new Error('Method not implemented.');
-  // }
+  async readOne(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void | Response> {
+    try {
+      const { id } = req.params;
+      if (id.length < 24) {
+        return res
+          .status(400)
+          .json({ error: 'Id must have 24 hexadecimal characters' }); 
+      }
+      const car = await this._carService.readOne(id);
+      if (!car) return res.status(404).json({ error: 'Object not found' });
+      return res.status(200).json(car);
+    } catch (error) {
+      next(error);
+    }
+  }
 
   // async update(req: Request, res: Response, next: NextFunction)
   // : Promise<void | Response> {
