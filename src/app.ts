@@ -1,4 +1,4 @@
-import express, { Router } from 'express';
+import express, { Router, ErrorRequestHandler, NextFunction } from 'express';
 import connectToDatabase from './connection';
 
 class App {
@@ -9,7 +9,7 @@ class App {
     this.app.use(express.json());
   }
 
-  public startServer(PORT: string | number = 3001): void {
+  public startServer(PORT: string | number = 3003): void {
     connectToDatabase();
     this.app.listen(
       PORT,
@@ -17,8 +17,10 @@ class App {
     );
   }
 
-  public addRouter(router: Router) {
-    this.app.use(router);
+  public addMiddleware(
+    middleware: Router | ErrorRequestHandler | NextFunction,
+  ) {
+    this.app.use(middleware);
   }
 
   public getApp() {
