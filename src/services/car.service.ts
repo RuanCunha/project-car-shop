@@ -31,4 +31,9 @@ export default class CarService implements CarServiceInterface {
     const result = await this._carModel.update(id, car);
     return result;
   }
+
+  async delete(id: string): Promise<Car | null> {
+    const car = await this._carModel.delete(id);
+    return car;
+  }
 }

@@ -5,6 +5,7 @@ import { CarServiceInterface } from '../interfaces/CarServiceInterface';
 import CarService from '../services/car.service';
 
 const ID_SIZE = { error: 'Id must have 24 hexadecimal characters' };
+const NOT_FOUND = { error: 'Object not found' };
 
 export default class CarController implements CarControllerInterface {
   // private $route: string;
@@ -63,7 +64,7 @@ export default class CarController implements CarControllerInterface {
           .json(ID_SIZE); 
       }
       const car = await this._carService.readOne(id);
-      if (!car) return res.status(404).json({ error: 'Object not found' });
+      if (!car) return res.status(404).json(NOT_FOUND);
       return res.status(200).json(car);
     } catch (error) {
       next(error);
@@ -82,17 +83,32 @@ export default class CarController implements CarControllerInterface {
       const { model, year, color, buyValue, doorsQty, seatsQty } = req.body;
       const car = await this._carService
         .update(id, { model, year, color, buyValue, doorsQty, seatsQty });
-      if (!car) return res.status(404).json({ error: 'Object not found' });
+      if (!car) return res.status(404).json(NOT_FOUND);
       return res.status(200).json(car);
     } catch (error) {
       next(error);
     }
   }
 
-  // async delete(req: Request, res: Response, next: NextFunction)
-  // : Promise<void | Response> {
-  //   throw new Error('Method not implemented.');
-  // }
+  async delete(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void | Response> {
+    try {
+      const { id } = req.params;
+      if (id.length < 24) {
+        return res
+          .status(400)
+          .json(ID_SIZE); 
+      }
+      const car = await this._carService.delete(id);
+      if (!car) return res.status(404).json(NOT_FOUND);
+      return res.status(204).json(car);
+    } catch (error) {
+      next(error);
+    }
+  }
 
   // get route() { return this.$route; }
 }

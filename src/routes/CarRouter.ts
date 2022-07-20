@@ -21,5 +21,9 @@ CarRouter.put(
   '/cars/:id',
   (req, res, next) => carController.update(req, res, next),
 );
+CarRouter.delete(
+  '/cars/:id',
+  (req, res, next) => carController.delete(req, res, next),
+);
 
 export default CarRouter;
