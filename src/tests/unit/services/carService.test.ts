@@ -1,10 +1,5 @@
 import { expect } from 'chai';
-import mongoose from 'mongoose';
-import { Car } from '../../../interfaces/CarInterface';
-import { Model } from '../../../interfaces/ModelInterface';
-import CarModel from '../../../models/car.model';
 import CarService from '../../../services/car.service';
-import MotoService from '../../../services/moto.service';
 import { CarModelMock, carMock, arrayCarsMock, carMockWithId } from '../mocks';
 
 
