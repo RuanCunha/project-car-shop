@@ -3,7 +3,6 @@ import { stub, SinonStub } from 'sinon';
 import { Model } from 'mongoose';
 import CarModel from '../../../models/car.model';
 import { carMongooseModel } from '../../../models/schemas/CarSchema';
-import { Car } from '../../../interfaces/CarInterface';
 import { carMock, arrayCarsMock, carMockWithId } from '../mocks'
 
 describe('Car Model', () => {

@@ -1,4 +1,5 @@
 import { Car } from "../../interfaces/CarInterface"
+import CarModel from "../../models/car.model";
 
 export const carMock: Car = {
   status: true,
@@ -41,3 +42,21 @@ export const arrayCarsMock: Car[] = [
     seatsQty: 5,
   }
 ]
+
+export class CarModelMock extends CarModel {
+  async create(obj: Car): Promise<Car> {
+    return obj;
+  }
+  async read(): Promise<Car[]> {
+    return arrayCarsMock;
+  }
+  async readOne(id: string): Promise<Car | null> {
+    return carMockWithId;
+  }
+  async update(id: string, obj: Car): Promise<Car | null> {
+    return carMockWithId;
+  }
+  async delete(id: string): Promise<Car | null> {
+    return carMockWithId;
+  }
+}
