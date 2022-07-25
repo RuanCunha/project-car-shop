@@ -4,48 +4,7 @@ import { Model } from 'mongoose';
 import CarModel from '../../../models/car.model';
 import { carMongooseModel } from '../../../models/schemas/CarSchema';
 import { Car } from '../../../interfaces/CarInterface';
-
-const carMock: Car = {
-  status: true,
-  model: 'Modelo Generico',
-  year: 2000,
-  color: 'Cor padrão',
-  buyValue: 20000,
-  doorsQty: 3,
-  seatsQty: 6,
-}
-
-const carMockWithId = {
-  _id: '123456789123456789123456',
-  status: true,
-  model: 'Modelo Generico',
-  year: 2000,
-  color: 'Cor padrão',
-  buyValue: 20000,
-  doorsQty: 3,
-  seatsQty: 6,
-}
-
-const arrayCarsMock: Car[] = [
-  {
-    status: true,
-    model: 'Modelo Generico',
-    year: 2000,
-    color: 'Cor padrão',
-    buyValue: 20000,
-    doorsQty: 3,
-    seatsQty: 6,
-  },
-  {
-    status: false,
-    model: 'Modelo Generico 2',
-    year: 2010,
-    color: 'Outra cor',
-    buyValue: 30000,
-    doorsQty: 4,
-    seatsQty: 5,
-  }
-]
+import { carMock, arrayCarsMock, carMockWithId } from '../mocks'
 
 describe('Car Model', () => {
   describe('Create car', () => {
