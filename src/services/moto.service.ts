@@ -29,9 +29,7 @@ export default class MotoService implements MotoServiceInterface {
 
   async update(id: string, motorcycle: Motorcycle): Promise<Motorcycle | null> {
     MotorcycleSchema.parse(motorcycle);
-    console.log(motorcycle);
     const result = await this._motoModel.update(id, motorcycle);
-    console.log(result);
     return result;
   }
 

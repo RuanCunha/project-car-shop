@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-// import Controller from '.';
 import { CarControllerInterface } from '../interfaces/CarControllerInterface';
 import { CarServiceInterface } from '../interfaces/CarServiceInterface';
 import CarService from '../services/car.service';
@@ -8,7 +7,6 @@ const ID_SIZE = { error: 'Id must have 24 hexadecimal characters' };
 const NOT_FOUND = { error: 'Object not found' };
 
 export default class CarController implements CarControllerInterface {
-  // private $route: string;
   private _carService: CarServiceInterface;
 
   constructor(carService: CarServiceInterface = new CarService()) {
@@ -29,14 +27,6 @@ export default class CarController implements CarControllerInterface {
       next(error);
     }
   }
-
-  // constructor(
-  //   service = new ExampleService(),
-  //   route = '/Examples',
-  // ) {
-  //   super(service);
-  //   this.$route = route;
-  // }
 
   async read(
     req: Request,
@@ -109,6 +99,4 @@ export default class CarController implements CarControllerInterface {
       next(error);
     }
   }
-
-  // get route() { return this.$route; }
 }

@@ -2,8 +2,6 @@ import { expect } from 'chai';
 import CarService from '../../../services/car.service';
 import { CarModelMock, carMock, arrayCarsMock, carMockWithId } from '../mocks';
 
-
-
 describe('Car Service', () => {
   describe('Create car', () => {
     it('Sucess', async () => {

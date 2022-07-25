@@ -1,6 +1,5 @@
-import sinon, { stub, SinonStub } from 'sinon';
-import chai, { expect } from 'chai';
-import chaiHttp = require('chai-http');
+import { stub, SinonStub } from 'sinon';
+import { expect } from 'chai';
 import CarController from '../../../controllers/car.controller';
 import { carMock, carMockWithId, CarServiceMock } from '../mocks';
 import { NextFunction, Request, Response } from 'express';
